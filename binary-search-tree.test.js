@@ -127,7 +127,7 @@ describe("dfsPostOrder", function () {
 	});
 });
 
-describe("BFS", function () {
+describe.only("BFS", function () {
 	it("should return the correct output", function () {
 		let binarySearchTree = new BinarySearchTree();
 		binarySearchTree

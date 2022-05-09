@@ -97,27 +97,83 @@ class BinarySearchTree {
 	/** findRecursively(val): search the tree for a node with value val.
 	 * return the node, if found; else undefined. Uses recursion. */
 
-	findRecursively(val) {}
+	findRecursively(val, curr = this.root) {
+		if (curr == null) return;
+		if (curr.val == val) return curr;
+
+		if (val > curr.val) return this.findRecursively(val, curr.right);
+		if (val < curr.val) return this.findRecursively(val, curr.left);
+	}
 
 	/** dfsPreOrder(): Traverse the array using pre-order DFS.
 	 * Return an array of visited nodes. */
 
-	dfsPreOrder() {}
+	dfsPreOrder() {
+		let visited = [];
+
+		function _dfsPreOrder(stack) {
+			let curr = stack.pop();
+			visited.push(curr.val);
+
+			curr.left && _dfsPreOrder([curr.left]);
+			curr.right && _dfsPreOrder([curr.right]);
+		}
+
+		_dfsPreOrder([this.root]);
+		return visited;
+	}
 
 	/** dfsInOrder(): Traverse the array using in-order DFS.
 	 * Return an array of visited nodes. */
 
-	dfsInOrder() {}
+	dfsInOrder() {
+		let visited = [];
+
+		function _dfsInOrder(stack) {
+			let curr = stack.pop();
+			curr.left && _dfsInOrder([curr.left]);
+			visited.push(curr.val);
+			curr.right && _dfsInOrder([curr.right]);
+		}
+
+		_dfsInOrder([this.root]);
+		return visited;
+	}
 
 	/** dfsPostOrder(): Traverse the array using post-order DFS.
 	 * Return an array of visited nodes. */
 
-	dfsPostOrder() {}
+	dfsPostOrder() {
+		let visited = [];
+
+		function _dfsPostOrder(stack) {
+			let curr = stack.pop();
+			curr.left && _dfsPostOrder([curr.left]);
+			curr.right && _dfsPostOrder([curr.right]);
+			visited.push(curr.val);
+		}
+
+		_dfsPostOrder([this.root]);
+		return visited;
+	}
 
 	/** bfs(): Traverse the array using BFS.
 	 * Return an array of visited nodes. */
 
-	bfs() {}
+	bfs() {
+		let visited = [];
+
+		let queue = [this.root];
+
+		while (queue.length) {
+			let curr = queue.shift();
+			if (curr == null) return;
+			visited.push(curr.val);
+			if (curr.left) queue.push(curr.left);
+			if (curr.right) queue.push(curr.right);
+		}
+		return visited;
+	}
 
 	/** Further Study!
 	 * remove(val): Removes a node in the BST with the value val.
