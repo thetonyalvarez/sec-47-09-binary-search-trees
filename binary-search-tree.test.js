@@ -40,7 +40,7 @@ describe("insertRecursively", function () {
 	});
 });
 
-describe.only("find", function () {
+describe("find", function () {
 	it("finds a node correctly", function () {
 		let binarySearchTree = new BinarySearchTree();
 		binarySearchTree.insert(15).insert(20).insert(10).insert(12);
