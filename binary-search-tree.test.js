@@ -1,7 +1,7 @@
 const BinarySearchTree = require("./binary-search-tree");
 
 describe("insert", function () {
-	it.only("inserts a node at the correct position", function () {
+	it("inserts a node at the correct position", function () {
 		var binarySearchTree = new BinarySearchTree();
 		binarySearchTree.insert(15).insert(20).insert(10).insert(12);
 		expect(binarySearchTree.root.val).toEqual(15);
@@ -40,7 +40,7 @@ describe("insertRecursively", function () {
 	});
 });
 
-describe("find", function () {
+describe.only("find", function () {
 	it("finds a node correctly", function () {
 		let binarySearchTree = new BinarySearchTree();
 		binarySearchTree.insert(15).insert(20).insert(10).insert(12);
